@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NeuralNetwork
 {
@@ -25,7 +22,7 @@ namespace NeuralNetwork
 
         public double FeedForward(List<double> inputs)
         {
-            if (Weights.Count != inputs.Count) throw new Exception("не совпадает количество весов");
+            if (Weights.Count != inputs.Count) throw new System.Exception("не совпадает количество весов");
 
             double sum = 0.0;
             for (int i = 0; i < inputs.Count; i++)
@@ -39,6 +36,15 @@ namespace NeuralNetwork
         private double Sigmoid(double x)
         {
             return 1.0 / (1.0 + Math.Pow(Math.E, -x));
+        }
+
+        //TODO: tempMethod удалити після можливості видалення нейронки
+        public void SetWeights(params double[] weights)
+        {
+            for(int i = 0; i < weights.Length; i++)
+            {
+                Weights[i] = weights[i];
+            }
         }
 
         // thet method - to more comfortable debuging
